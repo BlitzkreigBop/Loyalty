@@ -13,15 +13,36 @@ namespace Engine
         public List<FortuneCard> fortuneCardDeck = new List<FortuneCard>();
         public List<IntelligenceCard> intelligenceCardDeck = new List<IntelligenceCard>();
         public List<TurnCard> turnCardsDeck = new List<TurnCard>();
+        public int currentPlayerIdTurn = 1;
 
         public World(int numPlayers, List<FortuneCard> fortuneCards, List<IntelligenceCard> intelligenceCards, List<TurnCard> turnCards)
         {
-            
+            turnCards = RemoveTurnCards(numPlayers, turnCards);
             ShuffleDecks(fortuneCards, intelligenceCards, turnCards);
             InitializePlayers(numPlayers);
+            StartTurns();
         }
 
-        private void ShuffleDecks(List<FortuneCard> fortuneCards, List<IntelligenceCard> intelligenceCards, List<TurnCard> turnCards)
+    private List<TurnCard> RemoveTurnCards(int numPlayers, List<TurnCard> turnCards)
+    {
+      int numberCardsRemove = 6 - numPlayers;
+      turnCards.RemoveRange(numPlayers, numberCardsRemove);
+      return turnCards;
+    }
+
+    private void StartTurns()
+    {
+      foreach (Player player in players)
+      {
+        if(player.mTurnCard.turnCardId == currentPlayerIdTurn)
+        {
+          player.currentTurn = true;
+          player.updatePlayerUI();
+        }
+      }
+    }
+
+    private void ShuffleDecks(List<FortuneCard> fortuneCards, List<IntelligenceCard> intelligenceCards, List<TurnCard> turnCards)
         {
           fortuneCardDeck.Clear();
           intelligenceCardDeck.Clear();
@@ -67,10 +88,34 @@ namespace Engine
           turnCardsDeck.AddRange(turnCards);
         }
 
-        public void InitializePlayers(int numPlayers)
+    internal void EndTurn()
+    {
+      foreach(Player player in players)
+      {
+        if (player.mTurnCard.turnCardId == currentPlayerIdTurn)
         {
-            
+          player.currentTurn = false;
+          player.updatePlayerUI();
+        }
+      }
+      
+      currentPlayerIdTurn++;
 
+      if (currentPlayerIdTurn > players.Count()) currentPlayerIdTurn = 1;
+
+      foreach (Player player in players)
+      {
+        if (player.mTurnCard.turnCardId == currentPlayerIdTurn)
+        {
+          player.currentTurn = true;
+          player.updatePlayerUI();
+
+        }
+      }
+    }
+
+    public void InitializePlayers(int numPlayers)
+        {
             for (int i=1; i <= numPlayers; i++)
             {
                 FortuneCard fortuneCard = fortuneCardDeck[0];

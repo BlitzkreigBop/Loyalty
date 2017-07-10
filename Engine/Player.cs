@@ -13,6 +13,7 @@ namespace Engine
     public Territory Territory;
 
     public Boolean active = true;
+    public Boolean currentTurn = false;
 
     public PlayerForm playerForm; 
 

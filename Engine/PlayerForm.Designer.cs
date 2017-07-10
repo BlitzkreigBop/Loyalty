@@ -38,6 +38,9 @@
       this.lblHinterlands = new System.Windows.Forms.Label();
       this.numRmvPeasant = new System.Windows.Forms.NumericUpDown();
       this.btnRemovePlayersPeasant = new System.Windows.Forms.Button();
+      this.label4 = new System.Windows.Forms.Label();
+      this.lblNumGold = new System.Windows.Forms.Label();
+      this.btnTakeTurn = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.numRmvPeasant)).BeginInit();
       this.SuspendLayout();
       // 
@@ -53,7 +56,7 @@
       // lblPlayerNum
       // 
       this.lblPlayerNum.AutoSize = true;
-      this.lblPlayerNum.Location = new System.Drawing.Point(214, 27);
+      this.lblPlayerNum.Location = new System.Drawing.Point(203, 27);
       this.lblPlayerNum.Name = "lblPlayerNum";
       this.lblPlayerNum.Size = new System.Drawing.Size(16, 17);
       this.lblPlayerNum.TabIndex = 1;
@@ -72,7 +75,7 @@
       // lblTurnCardNum
       // 
       this.lblTurnCardNum.AutoSize = true;
-      this.lblTurnCardNum.Location = new System.Drawing.Point(214, 79);
+      this.lblTurnCardNum.Location = new System.Drawing.Point(203, 79);
       this.lblTurnCardNum.Name = "lblTurnCardNum";
       this.lblTurnCardNum.Size = new System.Drawing.Size(16, 17);
       this.lblTurnCardNum.TabIndex = 3;
@@ -116,7 +119,7 @@
       // 
       // numRmvPeasant
       // 
-      this.numRmvPeasant.Location = new System.Drawing.Point(35, 307);
+      this.numRmvPeasant.Location = new System.Drawing.Point(35, 368);
       this.numRmvPeasant.Minimum = new decimal(new int[] {
             1,
             0,
@@ -133,7 +136,7 @@
       // 
       // btnRemovePlayersPeasant
       // 
-      this.btnRemovePlayersPeasant.Location = new System.Drawing.Point(35, 252);
+      this.btnRemovePlayersPeasant.Location = new System.Drawing.Point(35, 313);
       this.btnRemovePlayersPeasant.Name = "btnRemovePlayersPeasant";
       this.btnRemovePlayersPeasant.Size = new System.Drawing.Size(210, 23);
       this.btnRemovePlayersPeasant.TabIndex = 10;
@@ -141,11 +144,43 @@
       this.btnRemovePlayersPeasant.UseVisualStyleBackColor = true;
       this.btnRemovePlayersPeasant.Click += new System.EventHandler(this.btnRemovePlayersPeasant_Click);
       // 
+      // label4
+      // 
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(35, 253);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(38, 17);
+      this.label4.TabIndex = 11;
+      this.label4.Text = "Gold";
+      // 
+      // lblNumGold
+      // 
+      this.lblNumGold.AutoSize = true;
+      this.lblNumGold.Location = new System.Drawing.Point(203, 253);
+      this.lblNumGold.Name = "lblNumGold";
+      this.lblNumGold.Size = new System.Drawing.Size(16, 17);
+      this.lblNumGold.TabIndex = 12;
+      this.lblNumGold.Text = "#";
+      // 
+      // btnTakeTurn
+      // 
+      this.btnTakeTurn.Enabled = false;
+      this.btnTakeTurn.Location = new System.Drawing.Point(38, 424);
+      this.btnTakeTurn.Name = "btnTakeTurn";
+      this.btnTakeTurn.Size = new System.Drawing.Size(207, 23);
+      this.btnTakeTurn.TabIndex = 13;
+      this.btnTakeTurn.Text = "Take Turn";
+      this.btnTakeTurn.UseVisualStyleBackColor = true;
+      this.btnTakeTurn.Click += new System.EventHandler(this.btnTakeTurn_Click);
+      // 
       // PlayerForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(282, 542);
+      this.Controls.Add(this.btnTakeTurn);
+      this.Controls.Add(this.lblNumGold);
+      this.Controls.Add(this.label4);
       this.Controls.Add(this.btnRemovePlayersPeasant);
       this.Controls.Add(this.numRmvPeasant);
       this.Controls.Add(this.lblHinterlands);
@@ -176,5 +211,8 @@
     private System.Windows.Forms.Label lblHinterlands;
     private System.Windows.Forms.NumericUpDown numRmvPeasant;
     private System.Windows.Forms.Button btnRemovePlayersPeasant;
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.Label lblNumGold;
+    private System.Windows.Forms.Button btnTakeTurn;
   }
 }

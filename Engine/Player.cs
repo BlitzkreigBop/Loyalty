@@ -15,10 +15,14 @@ namespace Engine
     public Boolean active = true;
     public Boolean currentTurn = false;
 
+    public World playerWorld;
+
     public PlayerForm playerForm; 
 
     public int playerId = 0;
     public int mGold = 0;
+    public int mProposingPlayerId = 0;
+    public int loyalToPlayerId = 0;
     
     public List<FortuneCard> mFortuneCards = new List<FortuneCard>();
     public List<IntelligenceCard> mIntelligenceCards = new List<IntelligenceCard>();
@@ -26,6 +30,8 @@ namespace Engine
 
     public Player(World world, int id, int gold, int peasants, FortuneCard fortuneCard, IntelligenceCard intelligenceCard, TurnCard turnCard)
     {
+      playerWorld = world;
+
       name = "Hardcoded Name";
       Territory = new Territory(peasants, 5, 5, 5);
       playerId = id;
@@ -69,6 +75,47 @@ namespace Engine
       }
 
       return true;
+    }
+
+    internal void decideIfLoyal(int proposingPlayerId)
+    {
+      mProposingPlayerId = proposingPlayerId;
+      playerForm.acceptDenyUI();
+    }
+
+    internal void acceptLoyalty()
+    {
+      loyalToPlayerId = mProposingPlayerId;
+      foreach (Player player in playerWorld.players.Where(n => n.playerId == mProposingPlayerId))
+      {
+        player.playerForm.loyalToUI(mProposingPlayerId);
+      }
+      playerForm.loyalToUI(mProposingPlayerId);
+    }
+
+    internal void loyaltyAccepted()
+    {
+      int newLoyalty = 0;
+      foreach (Player player in playerWorld.players)
+      {
+        if (player.currentTurn)
+        {
+          loyalToPlayerId = player.playerId;
+          playerForm.loyalToUI(loyalToPlayerId);
+          player.playerForm.loyalToUI(playerId);
+          newLoyalty = player.playerId;
+        }
+      }
+
+      
+
+      foreach (Player player in playerWorld.players.Where(n => n.loyalToPlayerId == newLoyalty))
+      {
+        if (loyalToPlayerId != player.playerId)
+        {
+          player.loyalToPlayerId = 0;
+        }
+      }
     }
   }
 }

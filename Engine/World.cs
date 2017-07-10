@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Engine
 {
     public class World
     {
-        public static List<Player> players = new List<Player>();
+        public List<Player> players = new List<Player>();
         public List<FortuneCard> fortuneCardDeck = new List<FortuneCard>();
         public List<IntelligenceCard> intelligenceCardDeck = new List<IntelligenceCard>();
         public List<TurnCard> turnCardsDeck = new List<TurnCard>();
@@ -88,6 +89,28 @@ namespace Engine
           turnCardsDeck.AddRange(turnCards);
         }
 
+    internal void acceptLoyalty(int v)
+    {
+      foreach (Player player in players)
+      {
+        if (player.playerId == v)
+        {
+          player.loyaltyAccepted();
+        }
+      }
+    }
+
+    internal void DeclareLoyalty(int numDeclareLoyalty, int proposingPlayerId)
+    {
+      foreach (Player player in players)
+      {
+        if (player.playerId == numDeclareLoyalty)
+        {
+          player.decideIfLoyal(proposingPlayerId);
+        }
+      }
+    }
+
     internal void EndTurn()
     {
       foreach(Player player in players)
@@ -98,18 +121,25 @@ namespace Engine
           player.updatePlayerUI();
         }
       }
-      
+
+      int numActivePlayers = players.Count(n => n.active == true);
       currentPlayerIdTurn++;
 
-      if (currentPlayerIdTurn > players.Count()) currentPlayerIdTurn = 1;
 
       foreach (Player player in players)
       {
+      if (currentPlayerIdTurn > numActivePlayers) currentPlayerIdTurn = 1;
+
         if (player.mTurnCard.turnCardId == currentPlayerIdTurn)
         {
-          player.currentTurn = true;
-          player.updatePlayerUI();
-
+          if (player.active)
+          {
+            player.currentTurn = true;
+            player.updatePlayerUI();
+          }
+          else{
+            currentPlayerIdTurn++; 
+          }
         }
       }
     }
@@ -137,6 +167,7 @@ namespace Engine
         public void RemovePlayer(Player player)
         {
           player.active = false;
+          player.updatePlayerUI();
         }
 
         public Boolean RemovePlayersPeasant(int playerId) {

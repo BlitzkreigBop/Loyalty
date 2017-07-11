@@ -16,6 +16,7 @@ namespace Engine
 
     public override Boolean UseCard()
     {
+      Console.ReadLine();
       return true;
     }
   }

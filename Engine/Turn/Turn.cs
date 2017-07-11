@@ -8,7 +8,11 @@ namespace Engine.Turn
 {
   public class Turn
   {
-    public Boolean TakeTurn(Player player)
+    public Turn()
+    {
+
+    }
+    public Boolean TakeTurn(World world)
     {
         
 

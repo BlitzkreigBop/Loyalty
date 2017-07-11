@@ -1,4 +1,5 @@
 ﻿using Engine.Cards.TurnCards;
+using Engine.Turn;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,9 @@ namespace Engine
 
     public World playerWorld;
 
-    public PlayerForm playerForm; 
+    public PlayerForm playerForm;
+
+    public Engine.Turn.Turn playersTurn;
 
     public int playerId = 0;
     public int mGold = 0;
@@ -55,8 +58,9 @@ namespace Engine
       return false;
     }
 
-    public Boolean UseCard(Card card)
+    public Boolean UseCard(String cardName)
     {
+      Card card = Card.getCardType(this, cardName);
       return card.UseCard();
     }
 

@@ -8,7 +8,7 @@ namespace Engine
 {
   public class LostShipment : FortuneCard
   {
-
+    
     public LostShipment()
     {
       cardName = "Lost Shipment";

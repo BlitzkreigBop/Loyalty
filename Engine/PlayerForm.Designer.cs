@@ -36,8 +36,6 @@
       this.lblPeasantsNum = new System.Windows.Forms.Label();
       this.label5 = new System.Windows.Forms.Label();
       this.lblHinterlands = new System.Windows.Forms.Label();
-      this.numRmvPeasant = new System.Windows.Forms.NumericUpDown();
-      this.btnRemovePlayersPeasant = new System.Windows.Forms.Button();
       this.label4 = new System.Windows.Forms.Label();
       this.lblNumGold = new System.Windows.Forms.Label();
       this.btnTakeTurn = new System.Windows.Forms.Button();
@@ -53,8 +51,15 @@
       this.label7 = new System.Windows.Forms.Label();
       this.lblLoyalTo = new System.Windows.Forms.Label();
       this.listCards = new System.Windows.Forms.ListBox();
-      ((System.ComponentModel.ISupportInitialize)(this.numRmvPeasant)).BeginInit();
+      this.btnUseCard = new System.Windows.Forms.Button();
+      this.numUseCardPlayer = new System.Windows.Forms.NumericUpDown();
+      this.tbnEndPeaceTerms = new System.Windows.Forms.Button();
+      this.btnEndPoliticalPhase = new System.Windows.Forms.Button();
+      this.btnEndEconomicPhase = new System.Windows.Forms.Button();
+      this.btnEndMilitaryPhase = new System.Windows.Forms.Button();
+      this.lblCurrentPhase = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.numDeclareLoyalty)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numUseCardPlayer)).BeginInit();
       this.SuspendLayout();
       // 
       // label1
@@ -130,33 +135,6 @@
       this.lblHinterlands.TabIndex = 7;
       this.lblHinterlands.Text = "#";
       // 
-      // numRmvPeasant
-      // 
-      this.numRmvPeasant.Location = new System.Drawing.Point(32, 271);
-      this.numRmvPeasant.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      this.numRmvPeasant.Name = "numRmvPeasant";
-      this.numRmvPeasant.Size = new System.Drawing.Size(120, 22);
-      this.numRmvPeasant.TabIndex = 9;
-      this.numRmvPeasant.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      // 
-      // btnRemovePlayersPeasant
-      // 
-      this.btnRemovePlayersPeasant.Location = new System.Drawing.Point(29, 242);
-      this.btnRemovePlayersPeasant.Name = "btnRemovePlayersPeasant";
-      this.btnRemovePlayersPeasant.Size = new System.Drawing.Size(210, 23);
-      this.btnRemovePlayersPeasant.TabIndex = 10;
-      this.btnRemovePlayersPeasant.Text = "Remove Player\'s Peasant";
-      this.btnRemovePlayersPeasant.UseVisualStyleBackColor = true;
-      this.btnRemovePlayersPeasant.Click += new System.EventHandler(this.btnRemovePlayersPeasant_Click);
-      // 
       // label4
       // 
       this.label4.AutoSize = true;
@@ -178,7 +156,7 @@
       // btnTakeTurn
       // 
       this.btnTakeTurn.Enabled = false;
-      this.btnTakeTurn.Location = new System.Drawing.Point(38, 872);
+      this.btnTakeTurn.Location = new System.Drawing.Point(29, 624);
       this.btnTakeTurn.Name = "btnTakeTurn";
       this.btnTakeTurn.Size = new System.Drawing.Size(207, 23);
       this.btnTakeTurn.TabIndex = 13;
@@ -305,19 +283,118 @@
       // 
       // listCards
       // 
+      this.listCards.DisplayMember = "blah";
       this.listCards.FormattingEnabled = true;
       this.listCards.ItemHeight = 16;
-      this.listCards.Location = new System.Drawing.Point(29, 300);
+      this.listCards.Location = new System.Drawing.Point(29, 242);
       this.listCards.Name = "listCards";
       this.listCards.Size = new System.Drawing.Size(210, 84);
       this.listCards.TabIndex = 25;
+      // 
+      // btnUseCard
+      // 
+      this.btnUseCard.Location = new System.Drawing.Point(29, 333);
+      this.btnUseCard.Name = "btnUseCard";
+      this.btnUseCard.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.btnUseCard.Size = new System.Drawing.Size(75, 23);
+      this.btnUseCard.TabIndex = 26;
+      this.btnUseCard.Text = "Use Card";
+      this.btnUseCard.UseVisualStyleBackColor = true;
+      this.btnUseCard.Click += new System.EventHandler(this.btnUseCard_Click);
+      // 
+      // numUseCardPlayer
+      // 
+      this.numUseCardPlayer.Location = new System.Drawing.Point(173, 333);
+      this.numUseCardPlayer.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+      this.numUseCardPlayer.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      this.numUseCardPlayer.Name = "numUseCardPlayer";
+      this.numUseCardPlayer.Size = new System.Drawing.Size(40, 22);
+      this.numUseCardPlayer.TabIndex = 27;
+      this.numUseCardPlayer.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      // 
+      // tbnEndPeaceTerms
+      // 
+      this.tbnEndPeaceTerms.AutoSize = true;
+      this.tbnEndPeaceTerms.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+      this.tbnEndPeaceTerms.Enabled = false;
+      this.tbnEndPeaceTerms.Location = new System.Drawing.Point(29, 388);
+      this.tbnEndPeaceTerms.Name = "tbnEndPeaceTerms";
+      this.tbnEndPeaceTerms.Size = new System.Drawing.Size(131, 27);
+      this.tbnEndPeaceTerms.TabIndex = 28;
+      this.tbnEndPeaceTerms.Text = "End Peace Terms";
+      this.tbnEndPeaceTerms.UseVisualStyleBackColor = true;
+      this.tbnEndPeaceTerms.Click += new System.EventHandler(this.tbnEndPeaceTerms_Click);
+      // 
+      // btnEndPoliticalPhase
+      // 
+      this.btnEndPoliticalPhase.AutoSize = true;
+      this.btnEndPoliticalPhase.Enabled = false;
+      this.btnEndPoliticalPhase.Location = new System.Drawing.Point(29, 453);
+      this.btnEndPoliticalPhase.Name = "btnEndPoliticalPhase";
+      this.btnEndPoliticalPhase.Size = new System.Drawing.Size(139, 27);
+      this.btnEndPoliticalPhase.TabIndex = 29;
+      this.btnEndPoliticalPhase.Text = "End Political Phase";
+      this.btnEndPoliticalPhase.UseVisualStyleBackColor = true;
+      this.btnEndPoliticalPhase.Click += new System.EventHandler(this.btnEndPoliticalPhase_Click);
+      // 
+      // btnEndEconomicPhase
+      // 
+      this.btnEndEconomicPhase.AutoSize = true;
+      this.btnEndEconomicPhase.Enabled = false;
+      this.btnEndEconomicPhase.Location = new System.Drawing.Point(29, 508);
+      this.btnEndEconomicPhase.Name = "btnEndEconomicPhase";
+      this.btnEndEconomicPhase.Size = new System.Drawing.Size(152, 27);
+      this.btnEndEconomicPhase.TabIndex = 30;
+      this.btnEndEconomicPhase.Text = "End Economic Phase";
+      this.btnEndEconomicPhase.UseVisualStyleBackColor = true;
+      this.btnEndEconomicPhase.Click += new System.EventHandler(this.btnEndEconomicPhase_Click);
+      // 
+      // btnEndMilitaryPhase
+      // 
+      this.btnEndMilitaryPhase.AutoSize = true;
+      this.btnEndMilitaryPhase.Enabled = false;
+      this.btnEndMilitaryPhase.Location = new System.Drawing.Point(29, 558);
+      this.btnEndMilitaryPhase.Name = "btnEndMilitaryPhase";
+      this.btnEndMilitaryPhase.Size = new System.Drawing.Size(135, 27);
+      this.btnEndMilitaryPhase.TabIndex = 31;
+      this.btnEndMilitaryPhase.Text = "End Military Phase";
+      this.btnEndMilitaryPhase.UseVisualStyleBackColor = true;
+      this.btnEndMilitaryPhase.Click += new System.EventHandler(this.btnEndMilitaryPhase_Click);
+      // 
+      // lblCurrentPhase
+      // 
+      this.lblCurrentPhase.AutoSize = true;
+      this.lblCurrentPhase.Location = new System.Drawing.Point(424, 1);
+      this.lblCurrentPhase.Name = "lblCurrentPhase";
+      this.lblCurrentPhase.Size = new System.Drawing.Size(99, 17);
+      this.lblCurrentPhase.TabIndex = 32;
+      this.lblCurrentPhase.Text = "Current Phase";
       // 
       // PlayerForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoScroll = true;
-      this.ClientSize = new System.Drawing.Size(282, 907);
+      this.ClientSize = new System.Drawing.Size(1474, 907);
+      this.Controls.Add(this.lblCurrentPhase);
+      this.Controls.Add(this.btnEndMilitaryPhase);
+      this.Controls.Add(this.btnEndEconomicPhase);
+      this.Controls.Add(this.btnEndPoliticalPhase);
+      this.Controls.Add(this.tbnEndPeaceTerms);
+      this.Controls.Add(this.numUseCardPlayer);
+      this.Controls.Add(this.btnUseCard);
       this.Controls.Add(this.listCards);
       this.Controls.Add(this.lblLoyalTo);
       this.Controls.Add(this.label7);
@@ -333,8 +410,6 @@
       this.Controls.Add(this.btnTakeTurn);
       this.Controls.Add(this.lblNumGold);
       this.Controls.Add(this.label4);
-      this.Controls.Add(this.btnRemovePlayersPeasant);
-      this.Controls.Add(this.numRmvPeasant);
       this.Controls.Add(this.lblHinterlands);
       this.Controls.Add(this.label5);
       this.Controls.Add(this.lblPeasantsNum);
@@ -345,8 +420,8 @@
       this.Controls.Add(this.label1);
       this.Name = "PlayerForm";
       this.Text = "PlayerForm";
-      ((System.ComponentModel.ISupportInitialize)(this.numRmvPeasant)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numDeclareLoyalty)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numUseCardPlayer)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -362,8 +437,6 @@
     private System.Windows.Forms.Label lblPeasantsNum;
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.Label lblHinterlands;
-    private System.Windows.Forms.NumericUpDown numRmvPeasant;
-    private System.Windows.Forms.Button btnRemovePlayersPeasant;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.Label lblNumGold;
     private System.Windows.Forms.Button btnTakeTurn;
@@ -379,5 +452,12 @@
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.Label lblLoyalTo;
     private System.Windows.Forms.ListBox listCards;
+    private System.Windows.Forms.Button btnUseCard;
+    private System.Windows.Forms.NumericUpDown numUseCardPlayer;
+    private System.Windows.Forms.Button tbnEndPeaceTerms;
+    private System.Windows.Forms.Button btnEndPoliticalPhase;
+    private System.Windows.Forms.Button btnEndEconomicPhase;
+    private System.Windows.Forms.Button btnEndMilitaryPhase;
+    private System.Windows.Forms.Label lblCurrentPhase;
   }
 }

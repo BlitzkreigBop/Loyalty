@@ -39,6 +39,7 @@ namespace Engine
         {
           player.currentTurn = true;
           player.updatePlayerUI();
+          //player.playersTurn.TakeTurn(this);
         }
       }
     }
@@ -88,6 +89,19 @@ namespace Engine
           intelligenceCardDeck.AddRange(intelligenceCards);
           turnCardsDeck.AddRange(turnCards);
         }
+
+    internal bool playerUsesCard(string usedCardName, int numUseCardPlayer)
+    {
+      foreach (Player player in players)
+      {
+        if (player.playerId == numUseCardPlayer)
+        {
+          player.UseCard(usedCardName);
+        }
+      }
+
+      return true;
+    }
 
     internal void acceptLoyalty(int v)
     {
@@ -142,6 +156,7 @@ namespace Engine
           }
         }
       }
+      StartTurns();
     }
 
     public void InitializePlayers(int numPlayers)

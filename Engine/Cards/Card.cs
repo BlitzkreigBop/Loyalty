@@ -8,6 +8,8 @@ namespace Engine
 {
   public class Card
   {
+    public String cardName;
+
     public Card()
     {
 

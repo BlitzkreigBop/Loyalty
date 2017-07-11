@@ -10,7 +10,7 @@ namespace Engine
   {
     public FortuneCard()
     {
-
+      cardName = " Fortune Card";
     }
     public override Boolean UseCard()
     {

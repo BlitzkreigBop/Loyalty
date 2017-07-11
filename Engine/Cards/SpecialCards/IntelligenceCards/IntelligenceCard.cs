@@ -8,9 +8,10 @@ namespace Engine
 {
   public class IntelligenceCard : Card
   {
+
     public IntelligenceCard()
     {
-
+      cardName = "Intelligence Card";
     }
 
     public override Boolean UseCard()

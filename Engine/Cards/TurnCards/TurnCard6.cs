@@ -8,9 +8,9 @@ namespace Engine.Cards.TurnCards
 {
   public class TurnCard6 : TurnCard
   {
-    //public Int32 turnCardId = 6;
 
     public TurnCard6() {
+      cardName = "Turn Card 6";
       turnCardId = 6;
     }
 

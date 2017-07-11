@@ -8,7 +8,6 @@ namespace Engine
 {
   public class SupplyLines : IntelligenceCard
   {
-    String cardName = "Supply Lines";
 
     public SupplyLines()
     {

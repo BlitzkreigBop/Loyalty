@@ -8,11 +8,10 @@ namespace Engine
 {
   public class SpiesAndInformers : IntelligenceCard
   {
-    String cardName = "Spies and Informers";
 
     public SpiesAndInformers()
     {
-
+      cardName = "Spies and Informers";
     }
 
     public override Boolean UseCard()

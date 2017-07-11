@@ -8,11 +8,10 @@ namespace Engine
 {
   public class PlentifulHarvest : FortuneCard
   {
-    String cardName = "Plentiful Harvest";
 
     public PlentifulHarvest()
     {
-
+      cardName = "Plentiful Harvest";
     }
 
     public override Boolean UseCard()

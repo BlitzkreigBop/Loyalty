@@ -8,11 +8,10 @@ namespace Engine
 {
   public class ScorchedEarth : IntelligenceCard
   {
-    String cardName = "Scorched Earth";
 
     public ScorchedEarth()
     {
-
+      cardName = "Scorched Earth";
     }
 
     public override Boolean UseCard()

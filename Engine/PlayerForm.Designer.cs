@@ -52,6 +52,7 @@
       this.btnDenyLoyalty = new System.Windows.Forms.Button();
       this.label7 = new System.Windows.Forms.Label();
       this.lblLoyalTo = new System.Windows.Forms.Label();
+      this.listCards = new System.Windows.Forms.ListBox();
       ((System.ComponentModel.ISupportInitialize)(this.numRmvPeasant)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numDeclareLoyalty)).BeginInit();
       this.SuspendLayout();
@@ -131,7 +132,7 @@
       // 
       // numRmvPeasant
       // 
-      this.numRmvPeasant.Location = new System.Drawing.Point(35, 368);
+      this.numRmvPeasant.Location = new System.Drawing.Point(32, 271);
       this.numRmvPeasant.Minimum = new decimal(new int[] {
             1,
             0,
@@ -148,7 +149,7 @@
       // 
       // btnRemovePlayersPeasant
       // 
-      this.btnRemovePlayersPeasant.Location = new System.Drawing.Point(32, 278);
+      this.btnRemovePlayersPeasant.Location = new System.Drawing.Point(29, 242);
       this.btnRemovePlayersPeasant.Name = "btnRemovePlayersPeasant";
       this.btnRemovePlayersPeasant.Size = new System.Drawing.Size(210, 23);
       this.btnRemovePlayersPeasant.TabIndex = 10;
@@ -302,12 +303,22 @@
       this.lblLoyalTo.TabIndex = 24;
       this.lblLoyalTo.Text = "0";
       // 
+      // listCards
+      // 
+      this.listCards.FormattingEnabled = true;
+      this.listCards.ItemHeight = 16;
+      this.listCards.Location = new System.Drawing.Point(29, 300);
+      this.listCards.Name = "listCards";
+      this.listCards.Size = new System.Drawing.Size(210, 84);
+      this.listCards.TabIndex = 25;
+      // 
       // PlayerForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoScroll = true;
       this.ClientSize = new System.Drawing.Size(282, 907);
+      this.Controls.Add(this.listCards);
       this.Controls.Add(this.lblLoyalTo);
       this.Controls.Add(this.label7);
       this.Controls.Add(this.btnDenyLoyalty);
@@ -367,5 +378,6 @@
     private System.Windows.Forms.Button btnDenyLoyalty;
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.Label lblLoyalTo;
+    private System.Windows.Forms.ListBox listCards;
   }
 }

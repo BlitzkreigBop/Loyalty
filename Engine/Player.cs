@@ -107,8 +107,6 @@ namespace Engine
         }
       }
 
-      
-
       foreach (Player player in playerWorld.players.Where(n => n.loyalToPlayerId == newLoyalty))
       {
         if (loyalToPlayerId != player.playerId)

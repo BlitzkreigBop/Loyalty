@@ -8,11 +8,10 @@ namespace Engine
 {
   public class Maneuver : IntelligenceCard
   {
-    String cardName = "Maneuver";
 
     public Maneuver()
     {
-
+      cardName = "Maneuver";
     }
 
     public override Boolean UseCard()

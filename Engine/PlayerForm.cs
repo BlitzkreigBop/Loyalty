@@ -36,6 +36,15 @@ namespace Engine
         lblFarmlands.Text = player.Territory.Farmlands.mSoldiers.ToString();
         lblFortress.Text = player.Territory.Fortress.mSoldiers.ToString();
         btnDeclareLoyalty.Enabled = player.currentTurn;
+        listCards.Items.Clear();
+        foreach (String str in player.mFortuneCards.Select(n => n.cardName))
+        {
+          listCards.Items.Add(str);
+        }
+        foreach (String str in player.mIntelligenceCards.Select(n => n.cardName))
+        {
+          listCards.Items.Add(str);
+        }
       }
       else{
         this.Opacity = .9;

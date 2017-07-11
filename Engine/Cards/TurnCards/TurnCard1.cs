@@ -8,10 +8,10 @@ namespace Engine.Cards.TurnCards
 {
   public class TurnCard1 : TurnCard
   {
-    //public Int32 turnCardId = 1;
 
     public TurnCard1()
     {
+      cardName = "Turn Card 1";
       turnCardId = 1;
     }
 
